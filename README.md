@@ -30,6 +30,18 @@ The .exe file can also be found here and will need to be downloaded with it, it 
 
 ---
 
+## `export_CUBE_CSAR_to_bag.bat`
+
+This batch when directed to a folder containing multiple Caris CSAR CUBE surfaces, will export the files as BAG. The BAG will have Depth (Elevation) and Uncertainty bands. 
+
+The name of the surface automatically goes into the comment fields, note the vertical datum comment is set to LAT
+
+You have to provide the BASE Editor batch exe file path in the code:
+
+`carisBatch=C:\Program Files\CARIS\BASE Editor\5.5\bin\carisbatch.exe`
+
+---
+
 ## `export_csar_to_geotiff.bat`
 
 This exports all csar in a folder to geotiff including bands specified by surface type.
