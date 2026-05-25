@@ -18,7 +18,7 @@ You have to provide the BASE Editor batch exe file path in the code:
 
 This batch when directed to a folder containing multiple Caris HIPS projects will run the line lock clearing utility recursively through all the subfolders.
 
-It requires the user to specify the location of the HIPS parent folder and the full file path to the .exe:
+It requires the user to specify the location of the HIPS parent folder in addition to the full file path to the line locks.exe:
 
 `C:\Visual Studio Code\clear_HIPS_line_locks.exe`
 
@@ -61,3 +61,17 @@ Note it refers to geodesy in the WKT file to function so you cannot use a shape 
 You can however export a shape file from Caris as a WKT.
 
 All bands will be included from the original
+
+You have to provide the BASE Editor batch exe file path in the code:
+
+`carisBatch=C:\Program Files\CARIS\BASE Editor\5.5\bin\carisbatch.exe`
+
+---
+
+## `recompute_CSAR.bat`
+
+This will prompt for a folder containing csar and then recompute everything inside
+
+You have to provide the HIPS batch exe file path in the code:
+
+`carisBatch=C:\Program Files\CARIS\HIPS and SIPS\11.4\bin\carisbatch.exe`
