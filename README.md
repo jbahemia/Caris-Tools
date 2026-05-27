@@ -1,6 +1,6 @@
 # Caris Tools
 
-Note I have created all these in standard windows batch file and powershell as sometimes IT restrict batches. they shouldnt need any additional packages and will run on IT controlled computers.
+Note I have created all these in standard windows batch file and powershell as sometimes IT restrict batches. they shouldnt need any additional packages and will run on IT controlled computers. Where applicable they allow you to select either a specific file or a folder of files.
 
 ## `add_1a_compliance_bands.bat`
 
