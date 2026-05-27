@@ -2,9 +2,11 @@
 
 Note I have created all these in standard windows batch file and powershell as sometimes IT restrict batches. they shouldnt need any additional packages and will run on IT controlled computers. Where applicable they allow you to select either a specific file or a folder of files.
 
+When entering a path for a specific file right click the target file and choose copy as path, that can be pasted into the terminal.
+
 ## `add_1a_compliance_bands.bat`
 
-This will add the IHO order 1a Position TPU and Depth TPU "compliance" bands to SDTP surfaces in a folder with Depth TPU / Position TPU layers.
+This will add the IHO order 1a Position TPU and Depth TPU "compliance" bands to SDTP surfaces in a folder with Depth TPU / Position TPU layers. You can also specify a single .csar file.
 
 Note that these are Allowable Uncertainty - Achieved Uncertainty so a negative number is a fail.
 
@@ -32,7 +34,7 @@ The .exe file can also be found here and will need to be downloaded with it, it 
 
 ## `export_CUBE_CSAR_to_bag.bat`
 
-This batch when directed to a folder containing multiple Caris CSAR CUBE surfaces, will export the files as BAG. The BAG will have Depth (Elevation) and Uncertainty bands. 
+This batch when directed to a folder containing multiple Caris CSAR CUBE surfaces, will export the files as BAG. The BAG will have Depth (Elevation) and Uncertainty bands. You can also specify a single .csar file.
 
 The name of the surface automatically goes into the comment fields, note the vertical datum comment is set to LAT
 
@@ -44,7 +46,7 @@ You have to provide the BASE Editor batch exe file path in the code:
 
 ## `export_csar_to_geotiff.bat`
 
-This exports all csar in a folder to geotiff including bands specified by surface type.
+This exports all csar in a folder to geotiff including bands specified by surface type. You can also specify a single .csar file.
 
 You have to provide the BASE Editor batch exe file path in the code:
 
@@ -54,7 +56,7 @@ You have to provide the BASE Editor batch exe file path in the code:
 
 ## `extract_subarea_(CSAR_WKT).bat`
 
-This will use a boundary exported as Well Known Text (WKT) from Caris and clip a csar by it.
+This will use a boundary exported as Well Known Text (WKT) from Caris and clip a csar by it. You can define Specific files or a folder.
 
 Note it refers to geodesy in the WKT file to function so you cannot use a shape file.
 
@@ -68,9 +70,19 @@ You have to provide the BASE Editor batch exe file path in the code:
 
 ---
 
+## `order1a_filter.bat`
+
+This will prompt for a folder containing HIPS project folders or a specific hips file and then run an order 1 IHO filter
+
+You have to provide the HIPS batch exe file path in the code:
+
+`carisBatch=C:\Program Files\CARIS\HIPS and SIPS\11.4\bin\carisbatch.exe`
+
+---
+
 ## `recompute_CSAR.bat`
 
-This will prompt for a folder containing csar and then recompute everything inside
+This will prompt for a folder containing csar or a specific csar file and then recompute everything inside
 
 You have to provide the HIPS batch exe file path in the code:
 
