@@ -2,7 +2,9 @@
 setlocal enabledelayedexpansion
 
 set /p type=Type CUBE or SDTP to select surface type: 
-set /p folder=Enter the path to the folder containing CSAR files: 
+set /p inputPath=Enter the path to a CSAR file or folder containing CSAR files: 
+REM Strip quotes if present
+set inputPath=%inputPath:"=%
 set carisBatch="C:\Program Files\CARIS\BASE Editor\5.5\bin\carisbatch.exe"
 
 set "bands="
@@ -18,11 +20,28 @@ if /I "%type%"=="CUBE" (
     exit /b
 )
 
-for %%F in ("%folder%\*.csar") do (
-    set "input=%%F"
-    set "output=%%~dpnF.tif"
-    echo Processing !input! to !output! with bands: !bands!
-    call %carisBatch% --run ExportRaster --output-format GEOTIFF !bands! "!input!" "!output!"
+
+REM Check if inputPath is a file or directory
+if exist "%inputPath%" (
+    if exist "%inputPath%\" (
+        REM It's a directory, process all .csar files in the folder
+        for %%F in ("%inputPath%\*.csar") do (
+            set "input=%%F"
+            set "output=%%~dpnF.tif"
+            echo Processing !input! to !output! with bands: !bands!
+            call %carisBatch% --run ExportRaster --output-format GEOTIFF !bands! "!input!" "!output!"
+        )
+    ) else (
+        REM It's a file, process just that file
+        set "input=%inputPath%"
+        set "output=%inputPath:~0,-5%.tif"
+        echo Processing !input! to !output! with bands: !bands!
+        call %carisBatch% --run ExportRaster --output-format GEOTIFF !bands! "!input!" "!output!"
+    )
+) else (
+    echo The path does not exist.
+    pause
+    exit /b 1
 )
 
 echo Done!
